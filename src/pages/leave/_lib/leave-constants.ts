@@ -1,0 +1,5 @@
+export const LEAVE_TYPE_LABELS: Record<string, string> = { annual: "Annual Leave", sick: "Sick Leave", casual: "Casual Leave", emergency: "Emergency Leave", unpaid: "Unpaid Leave" };
+export const LEAVE_TYPE_BADGE: Record<string, string> = { annual: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300", sick: "bg-red-500/15 text-red-700 dark:text-red-300", casual: "bg-sky-500/15 text-sky-700 dark:text-sky-300", emergency: "bg-orange-500/15 text-orange-700 dark:text-orange-300", unpaid: "bg-muted text-muted-foreground" };
+export const LEAVE_TYPE_DOT: Record<string, string> = { annual: "bg-emerald-500", sick: "bg-red-500", casual: "bg-sky-500", emergency: "bg-orange-500", unpaid: "bg-slate-400" };
+export const LEAVE_TYPE_DESCRIPTIONS: Record<string, string> = { annual: "Planned time off for vacation and personal rest.", sick: "Time off due to illness or medical appointments.", casual: "Short-notice personal leave for unexpected matters.", emergency: "Urgent leave for family or personal emergencies.", unpaid: "Approved leave without pay beyond your balance." };
+export const LEAVE_TYPES = ["annual", "sick", "casual", "emergency", "unpaid"] as const;
