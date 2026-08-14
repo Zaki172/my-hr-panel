@@ -1,0 +1,19 @@
+import { cn } from "@/lib/utils.ts";
+
+type StatusConfig = { label: string; className: string };
+
+const ATTENDANCE_STATUS: Record<string, StatusConfig> = { present: { label: "Present", className: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400" }, remote: { label: "Remote", className: "bg-sky-500/15 text-sky-600 dark:text-sky-400" }, absent: { label: "Absent", className: "bg-red-500/15 text-red-600 dark:text-red-400" }, late: { label: "Late", className: "bg-amber-500/15 text-amber-600 dark:text-amber-400" }, leave: { label: "Leave", className: "bg-purple-500/15 text-purple-600 dark:text-purple-400" }, half_day: { label: "Half Day", className: "bg-orange-500/15 text-orange-600 dark:text-orange-400" }, not_marked: { label: "Not Marked", className: "bg-muted text-muted-foreground" } };
+const PROJECT_TASK_STATUS: Record<string, StatusConfig> = { not_started: { label: "Not Started", className: "bg-muted text-muted-foreground" }, in_progress: { label: "In Progress", className: "bg-sky-500/15 text-sky-600 dark:text-sky-400" }, review: { label: "Review", className: "bg-amber-500/15 text-amber-600 dark:text-amber-400" }, completed: { label: "Completed", className: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400" }, on_hold: { label: "On Hold", className: "bg-red-500/15 text-red-600 dark:text-red-400" } };
+const PRIORITY_STATUS: Record<string, StatusConfig> = { low: { label: "Low", className: "bg-muted text-muted-foreground" }, medium: { label: "Medium", className: "bg-sky-500/15 text-sky-600 dark:text-sky-400" }, high: { label: "High", className: "bg-amber-500/15 text-amber-600 dark:text-amber-400" }, urgent: { label: "Urgent", className: "bg-red-500/15 text-red-600 dark:text-red-400" } };
+const EMPLOYEE_STATUS: Record<string, StatusConfig> = { active: { label: "Active", className: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400" }, on_leave: { label: "On Leave", className: "bg-purple-500/15 text-purple-600 dark:text-purple-400" }, probation: { label: "Probation", className: "bg-amber-500/15 text-amber-600 dark:text-amber-400" }, resigned: { label: "Resigned", className: "bg-muted text-muted-foreground" }, terminated: { label: "Terminated", className: "bg-red-500/15 text-red-600 dark:text-red-400" } };
+const LEAVE_STATUS: Record<string, StatusConfig> = { pending: { label: "Pending", className: "bg-amber-500/15 text-amber-600 dark:text-amber-400" }, approved: { label: "Approved", className: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400" }, rejected: { label: "Rejected", className: "bg-red-500/15 text-red-600 dark:text-red-400" } };
+
+function StatusPill({ config, className }: { config: StatusConfig; className?: string }) {
+  return <span className={cn("inline-flex w-fit items-center rounded-full px-2.5 py-0.5 text-xs font-medium whitespace-nowrap", config.className, className)}>{config.label}</span>;
+}
+
+export function AttendanceStatusBadge({ status, className }: { status: string; className?: string }) { return <StatusPill config={ATTENDANCE_STATUS[status] ?? ATTENDANCE_STATUS.not_marked} className={className} />; }
+export function TaskStatusBadge({ status, className }: { status: string; className?: string }) { return <StatusPill config={PROJECT_TASK_STATUS[status] ?? PROJECT_TASK_STATUS.not_started} className={className} />; }
+export function PriorityBadge({ priority, className }: { priority: string; className?: string }) { return <StatusPill config={PRIORITY_STATUS[priority] ?? PRIORITY_STATUS.low} className={className} />; }
+export function EmployeeStatusBadge({ status, className }: { status: string; className?: string }) { return <StatusPill config={EMPLOYEE_STATUS[status] ?? EMPLOYEE_STATUS.active} className={className} />; }
+export function LeaveStatusBadge({ status, className }: { status: string; className?: string }) { return <StatusPill config={LEAVE_STATUS[status] ?? LEAVE_STATUS.pending} className={className} />; }
